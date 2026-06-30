@@ -7,815 +7,269 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap');
-        
-        body {
-            font-family: 'Cairo', 'Noto Sans Arabic', system-ui, -apple-system, sans-serif;
-        }
-        
-        .chemical-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1135 100%);
-        }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        
-        .booking-card {
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .form-input {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .form-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
-            border-color: #14b8a6;
-        }
-        
-        .nav-scrolled {
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(16px);
-        }
+        body { font-family: 'Cairo', system-ui, sans-serif; }
+        .chemical-bg { background: linear-gradient(135deg, #0f172a 0%, #1e1135 100%); }
+        .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.15); }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200 overflow-x-hidden">
-    <!-- Top Announcement Bar -->
-    <div id="announcement-bar" 
-         class="bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-600 text-white py-3 px-4 text-center font-medium shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-center gap-x-3">
+<body class="bg-slate-950 text-slate-200">
+
+    <!-- Top Announcement -->
+    <div id="announcement-bar" class="bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-600 text-white py-3 px-4 text-center font-medium shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-center items-center gap-x-3">
             <i class="fas fa-fire text-xl animate-pulse"></i>
-            <span id="announcement-text" class="text-lg font-semibold tracking-wide">
-                🔥 متاح الآن الكورس التأسيسي لكيمياء الصف الثالث الثانوي 🔥
-            </span>
+            <span id="announcement-text" class="text-lg font-semibold">🔥 متاح الآن الكورس التأسيسي لكيمياء الصف الثالث الثانوي 🔥</span>
             <i class="fas fa-fire text-xl animate-pulse"></i>
         </div>
     </div>
 
     <!-- Navbar -->
     <nav class="bg-slate-900 border-b border-slate-800 sticky top-[52px] z-40">
-        <div class="max-w-7xl mx-auto">
-            <div class="px-6 py-5 flex items-center justify-between">
-                <div class="flex items-center gap-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
-                        <i class="fas fa-flask text-white text-3xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-bold tracking-tighter">دكتور أبانوب بديع</h1>
-                        <p class="text-[10px] text-teal-400 -mt-1 font-medium">كيمياء المرحلة الثانوية</p>
-                    </div>
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl flex items-center justify-center">
+                    <i class="fas fa-flask text-white text-3xl"></i>
                 </div>
-
-                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
-                    <a href="#hero" class="hover:text-teal-400 transition-colors">الرئيسية</a>
-                    <a href="#features" class="hover:text-teal-400 transition-colors">لماذا نحن؟</a>
-                    <a href="#join-course" class="hover:text-teal-400 transition-colors">الكورس التأسيسي</a>
-                    <a href="#booking" class="hover:text-teal-400 transition-colors">احجز الآن</a>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tighter">دكتور أبانوب بديع</h1>
+                    <p class="text-[10px] text-teal-400 -mt-1">كيمياء المرحلة الثانوية</p>
                 </div>
-
-                <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })" 
-                        class="px-6 py-2.5 bg-white text-slate-900 hover:bg-teal-50 transition-all font-semibold text-sm rounded-2xl flex items-center gap-x-2 shadow-lg">
-                    <i class="fas fa-calendar-check"></i>
-                    <span class="hidden sm:inline">احجز الآن</span>
-                </button>
             </div>
+            <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })" 
+                    class="px-6 py-2.5 bg-white text-slate-900 font-semibold rounded-2xl flex items-center gap-x-2">
+                <i class="fas fa-calendar-check"></i>
+                <span>احجز الآن</span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero -->
-    <section id="hero" class="chemical-bg relative min-h-[88vh] flex items-center pt-8 pb-16">
-        <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
-            <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-3xl mb-6 border border-white/20">
-                <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                <span class="text-sm font-medium text-emerald-300">منصة تعليمية متخصصة</span>
-            </div>
+    <section id="hero" class="chemical-bg min-h-[82vh] flex items-center">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter mb-4">دكتور أبانوب بديع</h1>
+            <p class="text-2xl text-slate-300 mb-8">خبير كيمياء المرحلة الثانوية</p>
             
-            <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-none mb-4">
-                دكتور أبانوب بديع
-            </h1>
-            
-            <p class="text-2xl md:text-3xl font-light text-slate-300 max-w-3xl mx-auto mb-8">
-                خبير كيمياء المرحلة الثانوية<br>
-                <span class="text-teal-400 font-medium">نتائج حقيقية • أسلوب ممتع • شرح مبسط</span>
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <button onclick="document.getElementById('join-course').scrollIntoView({ behavior: 'smooth' })" 
-                        class="group px-10 py-4 bg-white hover:bg-teal-50 transition-all text-slate-900 font-bold text-lg rounded-3xl flex items-center justify-center gap-x-3 shadow-2xl w-full sm:w-auto">
-                    <span>انضم للكورس التأسيسي</span>
-                </button>
-                
+                        class="px-10 py-4 bg-white text-slate-900 font-bold rounded-3xl text-lg">انضم للكورس التأسيسي</button>
                 <button onclick="document.getElementById('booking').scrollIntoView({ behavior: 'smooth' })" 
-                        class="px-8 py-4 border border-white/30 hover:bg-white/10 transition-all font-semibold rounded-3xl flex items-center justify-center gap-x-2 w-full sm:w-auto">
-                    <span>احجز درس</span>
-                </button>
+                        class="px-8 py-4 border border-white/30 font-semibold rounded-3xl text-lg">احجز درس</button>
             </div>
         </div>
     </section>
 
-    <!-- Features -->
-    <section id="features" class="max-w-7xl mx-auto px-6 py-16">
-        <div class="text-center mb-12">
-            <span class="px-4 py-1 bg-teal-900/50 text-teal-400 text-sm font-semibold rounded-3xl">لماذا تختار دكتور أبانوب؟</span>
-            <h2 class="text-4xl font-extrabold tracking-tight mt-3">تجربة تعليمية متكاملة</h2>
+    <!-- NEW: Slideshow Section -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+        <div class="text-center mb-10">
+            <span class="px-4 py-1 bg-emerald-900/50 text-emerald-400 text-sm font-semibold rounded-3xl">فخرنا</span>
+            <h2 class="text-4xl font-extrabold tracking-tight mt-3">صور الأوائل والدفعات</h2>
         </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="glass p-7 rounded-3xl border border-white/10 hover:border-teal-900/50 transition-all group">
-                <div class="w-14 h-14 bg-teal-900/40 flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-atom text-3xl text-teal-400"></i>
-                </div>
-                <h3 class="font-bold text-2xl mb-3">شرح علمي مبسط</h3>
-                <p class="text-slate-400 leading-relaxed">نحول المفاهيم المعقدة في الكيمياء إلى أفكار سهلة الفهم مع أمثلة من الحياة اليومية.</p>
-            </div>
-            
-            <div class="glass p-7 rounded-3xl border border-white/10 hover:border-teal-900/50 transition-all group">
-                <div class="w-14 h-14 bg-emerald-900/40 flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-flask text-3xl text-emerald-400"></i>
-                </div>
-                <h3 class="font-bold text-2xl mb-3">تجارب عملية افتراضية</h3>
-                <p class="text-slate-400 leading-relaxed">مشاهدة وتطبيق التجارب المعملية بطريقة تفاعلية لتعزيز الفهم العملي.</p>
-            </div>
-            
-            <div class="glass p-7 rounded-3xl border border-white/10 hover:border-teal-900/50 transition-all group">
-                <div class="w-14 h-14 bg-teal-900/40 flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-chart-line text-3xl text-teal-400"></i>
-                </div>
-                <h3 class="font-bold text-2xl mb-3">متابعة مستمرة</h3>
-                <p class="text-slate-400 leading-relaxed">تقارير أداء شهرية + مجموعات واتساب للمتابعة اليومية وحل الواجبات.</p>
-            </div>
-            
-            <div class="glass p-7 rounded-3xl border border-white/10 hover:border-teal-900/50 transition-all group">
-                <div class="w-14 h-14 bg-emerald-900/40 flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-tachometer-alt text-3xl text-emerald-400"></i>
-                </div>
-                <h3 class="font-bold text-2xl mb-3">نتائج مضمونة</h3>
-                <p class="text-slate-400 leading-relaxed">أكثر من 92% من طلابنا حققوا درجات عالية في الثانوية العامة.</p>
-            </div>
-        </div>
-    </section>
 
-    <!-- Join Foundational Course Section -->
-    <section id="join-course" class="max-w-4xl mx-auto px-6 pb-12">
-        <div class="glass rounded-3xl border border-teal-500/30 p-8 md:p-10 text-center">
-            <div class="flex justify-center mb-4">
-                <div class="px-5 py-1.5 bg-teal-600 text-white text-sm font-bold rounded-3xl flex items-center gap-x-2">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>الكورس التأسيسي</span>
+        <div class="relative max-w-4xl mx-auto">
+            <div id="carousel" class="overflow-hidden rounded-3xl shadow-2xl">
+                <div id="carousel-inner" class="flex transition-transform duration-700 ease-in-out">
+                    <!-- الصور هتتضاف تلقائي -->
                 </div>
             </div>
-            
-            <h2 class="text-3xl font-extrabold mb-3">انضم الآن للكورس التأسيسي</h2>
-            <p class="text-slate-300 max-w-md mx-auto mb-6">احجز مكانك في الكورس التأسيسي لكيمياء الصف الثالث الثانوي عبر واتساب مباشرة</p>
-            
-            <button onclick="joinFoundationalCourse()"
-                    class="px-10 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all text-white font-extrabold text-xl rounded-3xl flex items-center justify-center gap-x-3 mx-auto shadow-xl">
-                <i class="fab fa-whatsapp text-2xl"></i>
-                <span>انضم للكورس التأسيسي عبر واتساب</span>
+
+            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 text-slate-900 w-11 h-11 rounded-full flex items-center justify-center shadow-lg">
+                <i class="fas fa-chevron-left"></i>
             </button>
+            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 text-slate-900 w-11 h-11 rounded-full flex items-center justify-center shadow-lg">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div id="carousel-dots" class="flex justify-center gap-x-2 mt-6"></div>
+        </div>
+    </section>
+
+    <!-- Join Course Section (معدل) -->
+    <section id="join-course" class="max-w-4xl mx-auto px-6 pb-12">
+        <div class="glass p-10 rounded-3xl text-center border border-teal-500/30">
+            <h2 class="text-3xl font-bold mb-4">انضم الآن للكورس التأسيسي</h2>
+            <p class="text-slate-300 mb-6">املأ بياناتك وسيتم التواصل معك فوراً</p>
             
-            <p class="text-xs text-slate-500 mt-4">سيتم التواصل معك فوراً لتأكيد الحجز وتحديد الموعد</p>
+            <button onclick="joinFoundationalCourseWithName()" 
+                    class="px-10 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xl rounded-3xl flex items-center gap-x-3 mx-auto">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                <span>انضم عبر واتساب</span>
+            </button>
         </div>
     </section>
 
     <!-- Booking Section -->
     <section id="booking" class="max-w-3xl mx-auto px-6 pb-20">
         <div class="text-center mb-8">
-            <span class="text-teal-400 font-semibold">احجز درسك الآن</span>
-            <h2 class="text-4xl font-extrabold tracking-tight mt-1">احجز الآن</h2>
+            <h2 class="text-4xl font-extrabold">احجز الآن</h2>
         </div>
         
-        <!-- Academic Year Display -->
-        <div class="flex justify-center mb-6">
-            <div class="px-5 py-2 bg-teal-900/30 border border-teal-700/50 rounded-2xl flex items-center gap-x-2 text-sm">
-                <i class="fas fa-calendar text-emerald-400"></i>
-                <span id="academic-year-display" class="font-semibold">2025/2026</span>
-            </div>
-        </div>
-        
-        <div class="booking-card glass rounded-3xl border border-white/10 p-8 md:p-10 shadow-2xl">
-            <div id="booking-closed-message" class="hidden bg-red-900/30 border border-red-800/50 text-red-300 p-5 rounded-2xl text-center mb-6">
-                <i class="fas fa-lock mr-2"></i>
-                <span class="font-semibold">الحجز مغلق حالياً.</span>
-            </div>
-            
+        <div class="booking-card glass p-8 md:p-10 rounded-3xl">
             <form id="booking-form" class="space-y-6">
                 <div>
-                    <label class="block text-sm font-semibold mb-2 text-slate-300">الاسم بالكامل</label>
-                    <input type="text" id="full-name" required 
-                           class="form-input w-full bg-slate-900 border border-slate-700 focus:border-teal-500 px-5 py-3.5 rounded-2xl text-lg placeholder:text-slate-500"
-                           placeholder="مثال: أحمد محمد علي">
+                    <label class="block text-sm font-semibold mb-2">الاسم بالكامل</label>
+                    <input type="text" id="full-name" required class="form-input w-full bg-slate-900 border border-slate-700 px-5 py-3.5 rounded-2xl text-lg">
                 </div>
-                
                 <div>
-                    <label class="block text-sm font-semibold mb-2 text-slate-300">رقم الهاتف</label>
-                    <div class="relative">
-                        <div class="absolute left-5 top-1/2 -translate-y-1/2 text-slate-400">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <input type="tel" id="phone" required 
-                               class="form-input w-full bg-slate-900 border border-slate-700 focus:border-teal-500 pl-12 pr-5 py-3.5 rounded-2xl text-lg placeholder:text-slate-500"
-                               placeholder="01012345678">
-                    </div>
+                    <label class="block text-sm font-semibold mb-2">رقم الهاتف</label>
+                    <input type="tel" id="phone" required class="form-input w-full bg-slate-900 border border-slate-700 px-5 py-3.5 rounded-2xl text-lg">
                 </div>
-                
-                <button type="submit" id="book-btn"
-                        class="w-full mt-2 py-4 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 transition-all text-white font-extrabold text-xl rounded-3xl flex items-center justify-center gap-x-3 shadow-xl active:scale-[0.985]">
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-extrabold text-xl rounded-3xl flex items-center justify-center gap-x-3">
                     <i class="fab fa-whatsapp text-2xl"></i>
                     <span>احجز الآن عبر واتساب</span>
                 </button>
-                
-                <p class="text-center text-xs text-slate-500">سيتم فتح واتساب تلقائياً برسالة جاهزة</p>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-900 relative">
-        <div class="max-w-7xl mx-auto px-6 py-10">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-y-6">
-                <div class="text-center md:text-right">
-                    <p class="text-sm text-slate-400">جميع حقوق التصميم والتطوير محفوظة © كيرلس نبيل</p>
-                    <p class="text-xs text-slate-500 mt-1">منصة احترافية لتعليم الكيمياء • 2026</p>
-                </div>
-                
-                <div class="flex items-center gap-x-3">
-                    <a href="https://wa.me/201559685887" target="_blank"
-                       class="flex items-center gap-x-2 px-5 py-2.5 bg-slate-800 hover:bg-emerald-900/60 border border-slate-700 rounded-2xl text-sm font-medium transition-all">
-                        <i class="fab fa-whatsapp text-emerald-400"></i>
-                        <span>تواصل مع المطور</span>
-                    </a>
-                    
-                    <!-- Developer Button -->
-                    <button onclick="showPasswordModal()" 
-                            class="flex items-center gap-x-2 px-3 py-1.5 text-xs text-slate-400 hover:text-teal-400 transition-all rounded-2xl hover:bg-slate-800 border border-transparent hover:border-slate-700 cursor-pointer"
-                            title="خيارات المطور - اضغط هنا">
-                        <i class="fas fa-user-lock"></i>
-                        <span class="text-[10px] font-medium">خيارات المطور</span>
-                    </button>
-                </div>
-            </div>
+    <footer class="border-t border-slate-800 bg-slate-900 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-sm">
+            <p>© كيرلس نبيل - جميع الحقوق محفوظة</p>
+            <button onclick="showPasswordModal()" class="flex items-center gap-x-2 text-xs text-slate-400 hover:text-teal-400">
+                <i class="fas fa-user-lock"></i>
+                <span>خيارات المطور</span>
+            </button>
         </div>
     </footer>
 
-    <!-- Password Modal -->
-    <div id="password-modal" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
-        <div class="modal bg-slate-900 border border-slate-700 w-full max-w-md rounded-3xl p-8">
-            <div class="flex justify-between items-center mb-6">
-                <div>
-                    <h3 class="text-2xl font-bold">لوحة الإدارة</h3>
-                    <p class="text-xs text-slate-500">دخول خاص بالدكتور</p>
-                </div>
-                <button onclick="hidePasswordModal()" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-white">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            
-            <div class="space-y-4">
-                <div>
-                    <label class="text-sm text-slate-400 block mb-1.5">كلمة المرور</label>
-                    <input type="password" id="admin-password" placeholder="أدخل كلمة المرور"
-                           class="w-full bg-slate-800 border border-slate-700 px-4 py-3 rounded-2xl focus:border-teal-500 outline-none">
-                </div>
-                
-                <button onclick="verifyAdminPassword()"
-                        class="w-full py-3 bg-teal-600 hover:bg-teal-500 transition-colors font-semibold rounded-2xl flex items-center justify-center gap-x-2">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <span>دخول لوحة الإدارة</span>
-                </button>
-                
-                <div class="text-[10px] text-center text-slate-500 pt-1">
-                    ملاحظة: هذه لوحة إدارة للعرض التوضيحي فقط.<br>
-                    الحماية الكاملة تتطلب خادم خلفي.
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Admin Panel -->
-    <div id="admin-modal" class="hidden fixed inset-0 bg-black/80 z-[110] flex items-center justify-center p-4">
-        <div class="modal w-full max-w-6xl bg-slate-900 border border-slate-700 rounded-3xl overflow-hidden shadow-2xl max-h-[92vh] flex flex-col">
-            
-            <div class="px-8 py-5 border-b border-slate-700 flex items-center justify-between bg-slate-950">
-                <div class="flex items-center gap-x-4">
-                    <div class="w-10 h-10 bg-teal-600 rounded-2xl flex items-center justify-center">
-                        <i class="fas fa-user-shield text-white"></i>
-                    </div>
-                    <div>
-                        <h2 class="font-extrabold text-2xl">لوحة الإدارة</h2>
-                        <p class="text-xs text-teal-400">دكتور أبانوب بديع • كيمياء الثانوية</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-x-3">
-                    <button onclick="logoutAdmin()" class="px-5 py-2 text-sm flex items-center gap-x-2 hover:bg-slate-800 transition-colors rounded-2xl text-red-400">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span>خروج</span>
-                    </button>
-                    <button onclick="hideAdminModal()" class="w-11 h-11 flex items-center justify-center hover:bg-slate-800 transition-colors rounded-2xl text-xl">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="flex flex-1 overflow-hidden">
-                <!-- Sidebar -->
-                <div class="w-64 border-l border-slate-700 bg-slate-950 p-4 flex flex-col">
-                    <div onclick="switchAdminTab(0)" class="admin-tab active flex items-center gap-x-3 px-5 py-3.5 mb-1 rounded-2xl cursor-pointer" id="tab-0">
-                        <i class="fas fa-clock w-5"></i>
-                        <span class="font-semibold">إدارة المواعيد</span>
-                    </div>
-                    <div onclick="switchAdminTab(1)" class="admin-tab flex items-center gap-x-3 px-5 py-3.5 mb-1 rounded-2xl cursor-pointer" id="tab-1">
-                        <i class="fas fa-graduation-cap w-5"></i>
-                        <span class="font-semibold">إدارة الصفوف</span>
-                    </div>
-                    <div onclick="switchAdminTab(2)" class="admin-tab flex items-center gap-x-3 px-5 py-3.5 mb-1 rounded-2xl cursor-pointer" id="tab-2">
-                        <i class="fas fa-bullhorn w-5"></i>
-                        <span class="font-semibold">تعديل الإعلان</span>
-                    </div>
-                    <div onclick="switchAdminTab(3)" class="admin-tab flex items-center gap-x-3 px-5 py-3.5 mb-1 rounded-2xl cursor-pointer" id="tab-3">
-                        <i class="fas fa-cog w-5"></i>
-                        <span class="font-semibold">إعدادات الحجز</span>
-                    </div>
-                    
-                    <div class="mt-auto px-5 pt-6 border-t border-slate-800">
-                        <button onclick="resetAllData()" class="w-full text-xs flex items-center justify-center gap-x-2 py-2 text-red-400 hover:text-red-500 transition-colors">
-                            <i class="fas fa-undo"></i>
-                            <span>إعادة تعيين البيانات</span>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- Content -->
-                <div class="flex-1 p-8 overflow-auto">
-                    
-                    <!-- Tab 0: Appointments -->
-                    <div id="admin-content-0">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="font-bold text-2xl">إدارة المواعيد المتاحة</h3>
-                            <span class="text-xs px-3 py-1 bg-teal-900/30 text-teal-400 rounded-xl">يتم الحفظ تلقائياً</span>
-                        </div>
-                        
-                        <div class="mb-5 flex gap-3">
-                            <input id="new-appointment" type="text" placeholder="أضف موعداً جديداً" class="flex-1 bg-slate-800 border border-slate-700 px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-teal-500">
-                            <button onclick="addAppointment()" class="px-7 bg-teal-600 hover:bg-teal-500 transition-colors font-semibold rounded-2xl flex items-center gap-x-2">
-                                <i class="fas fa-plus"></i><span>إضافة</span>
-                            </button>
-                        </div>
-                        <div id="appointments-list" class="space-y-2 max-h-[380px] overflow-auto pr-2"></div>
-                    </div>
-                    
-                    <!-- Tab 1: Grades -->
-                    <div id="admin-content-1" class="hidden">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="font-bold text-2xl">إدارة الصفوف الدراسية</h3>
-                            <span class="text-xs px-3 py-1 bg-teal-900/30 text-teal-400 rounded-xl">يتم الحفظ تلقائياً</span>
-                        </div>
-                        
-                        <div class="mb-5 flex gap-3">
-                            <input id="new-grade" type="text" placeholder="أضف صفاً جديداً" class="flex-1 bg-slate-800 border border-slate-700 px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-teal-500">
-                            <button onclick="addGrade()" class="px-7 bg-emerald-600 hover:bg-emerald-500 transition-colors font-semibold rounded-2xl flex items-center gap-x-2">
-                                <i class="fas fa-plus"></i><span>إضافة</span>
-                            </button>
-                        </div>
-                        <div id="grades-list" class="space-y-2 max-h-[380px] overflow-auto pr-2"></div>
-                    </div>
-                    
-                    <!-- Tab 2: Announcement -->
-                    <div id="admin-content-2" class="hidden">
-                        <h3 class="font-bold text-2xl mb-6">تعديل إعلان الصفحة الرئيسية</h3>
-                        <textarea id="edit-announcement" rows="4" class="w-full bg-slate-800 border border-slate-700 p-5 rounded-3xl text-lg focus:outline-none focus:border-teal-500 resize-y"></textarea>
-                        <div class="flex justify-end mt-4">
-                            <button onclick="saveAnnouncement()" class="px-8 py-3 bg-gradient-to-r from-teal-500 to-emerald-500 hover:brightness-105 transition-all rounded-2xl font-bold flex items-center gap-x-2">
-                                <i class="fas fa-save"></i><span>حفظ التعديلات</span>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <!-- Tab 3: Booking Settings -->
-                    <div id="admin-content-3" class="hidden">
-                        <h3 class="font-bold text-2xl mb-6">إعدادات الحجز</h3>
-                        
-                        <div class="glass p-7 rounded-3xl border border-white/10 mb-6">
-                            <div class="flex items-center justify-between mb-6">
-                                <div>
-                                    <div class="font-bold text-xl">حالة الحجز</div>
-                                    <div id="booking-status-text" class="text-emerald-400 text-sm mt-0.5">الحجز مفتوح حالياً</div>
-                                </div>
-                                <label class="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" id="booking-toggle" class="sr-only peer" onchange="toggleBooking()">
-                                    <div class="w-14 h-8 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-7 after:w-7 after:transition-all peer-checked:bg-emerald-600"></div>
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="glass p-7 rounded-3xl border border-white/10">
-                            <div>
-                                <label class="block text-sm font-semibold mb-2">العام الدراسي الحالي</label>
-                                <div class="flex gap-3">
-                                    <input type="text" id="academic-year-input" class="flex-1 bg-slate-800 border border-slate-700 px-4 py-3 rounded-2xl text-sm focus:outline-none focus:border-teal-500" placeholder="مثال: 2025/2026">
-                                    <button onclick="saveAcademicYear()" class="px-6 bg-teal-600 hover:bg-teal-500 transition-colors font-semibold rounded-2xl text-sm">حفظ</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast -->
-    <div id="toast-container" class="fixed bottom-5 right-5 z-[200]"></div>
-
     <script>
-        // ==================== DATA ====================
-        let platformData = {
-            appointments: [
-                "السبت 10:00 صباحاً - 12:00 ظهراً",
-                "الأحد 5:00 مساءً - 7:00 مساءً",
-                "الثلاثاء 3:00 مساءً - 5:00 مساءً",
-                "الخميس 6:00 مساءً - 8:00 مساءً"
-            ],
-            grades: [
-                "الصف الأول الثانوي",
-                "الصف الثاني الثانوي",
-                "الصف الثالث الثانوي"
-            ],
-            announcement: "🔥 متاح الآن الكورس التأسيسي لكيمياء الصف الثالث الثانوي 🔥",
-            bookingOpen: true,
-            currentAcademicYear: "2025/2026"
-        };
-        
-        function loadData() {
-            const saved = localStorage.getItem('drAbanoubPlatformData');
-            if (saved) {
-                platformData = JSON.parse(saved);
-            } else {
-                saveData();
-            }
-        }
-        
-        function saveData() {
-            localStorage.setItem('drAbanoubPlatformData', JSON.stringify(platformData));
-        }
-        
-        function updateAnnouncementBar() {
-            const bar = document.getElementById('announcement-text');
-            if (bar) bar.innerHTML = platformData.announcement;
-        }
-        
-        function updateDisplays() {
-            const yearEl = document.getElementById('academic-year-display');
-            if (yearEl) yearEl.textContent = platformData.currentAcademicYear || "2025/2026";
-        }
-        
-        function updateBookingFormState() {
-            const form = document.getElementById('booking-form');
-            const closedMsg = document.getElementById('booking-closed-message');
-            const bookBtn = document.getElementById('book-btn');
-            
-            if (!platformData.bookingOpen) {
-                form.style.opacity = '0.6';
-                form.style.pointerEvents = 'none';
-                closedMsg.classList.remove('hidden');
-                bookBtn.disabled = true;
-            } else {
-                form.style.opacity = '1';
-                form.style.pointerEvents = 'auto';
-                closedMsg.classList.add('hidden');
-                bookBtn.disabled = false;
-            }
-        }
-        
-        // ==================== ADMIN ====================
-        function showPasswordModal() {
-            const modal = document.getElementById('password-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.getElementById('admin-password').focus();
-        }
-        
-        function hidePasswordModal() {
-            const modal = document.getElementById('password-modal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-            document.getElementById('admin-password').value = '';
-        }
-        
-        function verifyAdminPassword() {
-            const passwordInput = document.getElementById('admin-password').value.trim();
-            
-            if (passwordInput === "koko2009") {
-                hidePasswordModal();
-                showAdminModal();
-                showToast('تم الدخول بنجاح إلى لوحة الإدارة', 'success');
-            } else {
-                showToast('كلمة المرور غير صحيحة', 'error');
-                document.getElementById('admin-password').value = '';
-            }
-        }
-        
-        function showAdminModal() {
-            const modal = document.getElementById('admin-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            switchAdminTab(0);
-            renderAllAdminLists();
-            updateBookingToggle();
-            loadAdvancedSettings();
-        }
-        
-        function hideAdminModal() {
-            const modal = document.getElementById('admin-modal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
-        }
-        
-        let currentAdminTab = 0;
-        
-        function switchAdminTab(tabIndex) {
-            document.querySelectorAll('[id^="admin-content-"]').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.remove('active'));
-            
-            document.getElementById(`admin-content-${tabIndex}`).classList.remove('hidden');
-            document.getElementById(`tab-${tabIndex}`).classList.add('active');
-            currentAdminTab = tabIndex;
-            
-            if (tabIndex === 0) renderAppointmentsList();
-            if (tabIndex === 1) renderGradesList();
-            if (tabIndex === 2) loadAnnouncementEditor();
-            if (tabIndex === 3) loadAdvancedSettings();
-        }
-        
-        function renderAppointmentsList() {
-            const container = document.getElementById('appointments-list');
-            container.innerHTML = '';
-            if (platformData.appointments.length === 0) {
-                container.innerHTML = `<div class="text-center py-8 text-slate-400">لا توجد مواعيد</div>`;
-                return;
-            }
-            platformData.appointments.forEach((appointment, index) => {
-                const div = document.createElement('div');
-                div.className = `flex items-center justify-between bg-slate-800 border border-slate-700 px-5 py-4 rounded-2xl`;
-                div.innerHTML = `
-                    <div class="flex items-center gap-x-3 flex-1">
-                        <i class="fas fa-clock text-teal-400"></i>
-                        <span class="font-medium">${appointment}</span>
-                    </div>
-                    <div class="flex gap-x-1">
-                        <button onclick="editAppointment(${index})" class="px-4 py-1.5 text-xs bg-slate-700 hover:bg-slate-600 rounded-xl">تعديل</button>
-                        <button onclick="deleteAppointment(${index})" class="px-4 py-1.5 text-xs bg-red-900/70 hover:bg-red-800 rounded-xl">حذف</button>
+        // ==================== كل الصور (ضيف كل الأسماء هنا) ====================
+        let slides = [
+            { src: "images/FB_IMG_1782778195919.jpg", caption: "" },
+            { src: "images/FB_IMG_17827339494.jpg", caption: "" },
+            { src: "images/FB_IMG_1781278180.jpg", caption: "" },
+            { src: "images/FB_IMG_178127819407.jpg", caption: "" },
+            { src: "images/FB_IMG_17827084564.jpg", caption: "" },
+            { src: "images/FB_IMG_1782709076.jpg", caption: "" },
+            { src: "images/FB_IMG_1782707622.jpg", caption: "" },
+            { src: "images/FB_IMG_1782708430.jpg", caption: "" },
+            { src: "images/FB_IMG_1782708064.jpg", caption: "" },
+            { src: "images/FB_IMG_1782706476.jpg", caption: "" },
+            { src: "images/FB_IMG_17827072184.jpg", caption: "" },
+            { src: "images/FB_IMG_1782706939.jpg", caption: "" },
+            { src: "images/FB_IMG_1782705279.jpg", caption: "" },
+            { src: "images/FB_IMG_1782703259.jpg", caption: "" },
+            { src: "images/FB_IMG_1782705109.jpg", caption: "" },
+            { src: "images/FB_IMG_1782705839.jpg", caption: "" },
+            { src: "images/FB_IMG_1782705138.jpg", caption: "" },
+            { src: "images/FB_IMG_1782703567.jpg", caption: "" },
+            { src: "images/FB_IMG_1782704736.jpg", caption: "" },
+            { src: "images/FB_IMG_1782704624.jpg", caption: "" },
+            { src: "images/FB_IMG_1782704069.jpg", caption: "" },
+            { src: "images/FB_IMG_1782701859.jpg", caption: "" },
+            { src: "images/FB_IMG_1782706257.jpg", caption: "" },
+            { src: "images/FB_IMG_1782703282.jpg", caption: "" },
+            { src: "images/FB_IMG_1782704045.jpg", caption: "" },
+            { src: "images/FB_IMG_1782708598.jpg", caption: "" },
+            { src: "images/FB_IMG_1782706008.jpg", caption: "" },
+            { src: "images/FB_IMG_1782703863.jpg", caption: "" },
+            { src: "images/FB_IMG_1782701226.jpg", caption: "" },
+            { src: "images/FB_IMG_17827019128.jpg", caption: "" },
+            { src: "images/FB_IMG_17827016614.jpg", caption: "" },
+            { src: "images/FB_IMG_17827014273.jpg", caption: "" },
+            { src: "images/FB_IMG_17827011464.jpg", caption: "" },
+            { src: "images/FB_IMG_17827006450.jpg", caption: "" },
+            { src: "images/FB_IMG_1782700724.jpg", caption: "" },
+            { src: "images/FB_IMG_17827006448.jpg", caption: "" },
+            { src: "images/FB_IMG_17827799650.jpg", caption: "" },
+            { src: "images/FB_IMG_17827796224.jpg", caption: "" },
+            { src: "images/FB_IMG_17827779977.jpg", caption: "" }
+            // لو فيه صور زيادة، ضيفها بنفس الشكل
+        ];
+
+        let currentSlide = 0;
+        let carouselInterval;
+
+        function renderCarousel() {
+            const inner = document.getElementById('carousel-inner');
+            const dotsContainer = document.getElementById('carousel-dots');
+            inner.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            slides.forEach((slide, index) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = `min-w-full flex-shrink-0 relative`;
+                slideDiv.innerHTML = `
+                    <img src="${slide.src}" class="w-full h-[420px] object-cover rounded-3xl" alt="">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 rounded-b-3xl">
+                        <p class="text-white text-lg font-semibold">${slide.caption || ''}</p>
                     </div>
                 `;
-                container.appendChild(div);
+                inner.appendChild(slideDiv);
+
+                const dot = document.createElement('button');
+                dot.className = `w-3 h-3 rounded-full transition-all ${index === currentSlide ? 'bg-teal-400 w-6' : 'bg-slate-600'}`;
+                dot.onclick = () => goToSlide(index);
+                dotsContainer.appendChild(dot);
             });
         }
-        
-        function addAppointment() {
-            const input = document.getElementById('new-appointment');
-            const value = input.value.trim();
-            if (!value) return showToast('أدخل الموعد', 'error');
-            if (platformData.appointments.includes(value)) return showToast('الموعد موجود', 'error');
+
+        function updateCarousel() {
+            const inner = document.getElementById('carousel-inner');
+            inner.style.transform = `translateX(-${currentSlide * 100}%)`;
             
-            platformData.appointments.push(value);
-            saveData();
-            renderAppointmentsList();
-            input.value = '';
-            showToast('تمت إضافة الموعد وحفظه تلقائياً', 'success');
-        }
-        
-        function editAppointment(index) {
-            const newValue = prompt('تعديل الموعد:', platformData.appointments[index]);
-            if (newValue && newValue.trim()) {
-                platformData.appointments[index] = newValue.trim();
-                saveData();
-                renderAppointmentsList();
-                showToast('تم تعديل الموعد وحفظه تلقائياً', 'success');
-            }
-        }
-        
-        function deleteAppointment(index) {
-            if (!confirm('حذف هذا الموعد؟')) return;
-            platformData.appointments.splice(index, 1);
-            saveData();
-            renderAppointmentsList();
-            showToast('تم حذف الموعد وحفظه تلقائياً', 'success');
-        }
-        
-        function renderGradesList() {
-            const container = document.getElementById('grades-list');
-            container.innerHTML = '';
-            if (platformData.grades.length === 0) {
-                container.innerHTML = `<div class="text-center py-8 text-slate-400">لا توجد صفوف</div>`;
-                return;
-            }
-            platformData.grades.forEach((grade, index) => {
-                const div = document.createElement('div');
-                div.className = `flex items-center justify-between bg-slate-800 border border-slate-700 px-5 py-4 rounded-2xl`;
-                div.innerHTML = `
-                    <div class="flex items-center gap-x-3 flex-1">
-                        <i class="fas fa-graduation-cap text-emerald-400"></i>
-                        <span class="font-medium">${grade}</span>
-                    </div>
-                    <div class="flex gap-x-1">
-                        <button onclick="editGrade(${index})" class="px-4 py-1.5 text-xs bg-slate-700 hover:bg-slate-600 rounded-xl">تعديل</button>
-                        <button onclick="deleteGrade(${index})" class="px-4 py-1.5 text-xs bg-red-900/70 hover:bg-red-800 rounded-xl">حذف</button>
-                    </div>
-                `;
-                container.appendChild(div);
+            document.querySelectorAll('#carousel-dots button').forEach((dot, index) => {
+                dot.className = `w-3 h-3 rounded-full transition-all ${index === currentSlide ? 'bg-teal-400 w-6' : 'bg-slate-600'}`;
             });
         }
-        
-        function addGrade() {
-            const input = document.getElementById('new-grade');
-            const value = input.value.trim();
-            if (!value) return showToast('أدخل اسم الصف', 'error');
-            if (platformData.grades.includes(value)) return showToast('الصف موجود', 'error');
-            
-            platformData.grades.push(value);
-            saveData();
-            renderGradesList();
-            input.value = '';
-            showToast('تمت إضافة الصف وحفظه تلقائياً', 'success');
-        }
-        
-        function editGrade(index) {
-            const newValue = prompt('تعديل الصف:', platformData.grades[index]);
-            if (newValue && newValue.trim()) {
-                platformData.grades[index] = newValue.trim();
-                saveData();
-                renderGradesList();
-                showToast('تم تعديل الصف وحفظه تلقائياً', 'success');
-            }
-        }
-        
-        function deleteGrade(index) {
-            if (!confirm('حذف هذا الصف؟')) return;
-            platformData.grades.splice(index, 1);
-            saveData();
-            renderGradesList();
-            showToast('تم حذف الصف وحفظه تلقائياً', 'success');
-        }
-        
-        function loadAnnouncementEditor() {
-            document.getElementById('edit-announcement').value = platformData.announcement;
-        }
-        
-        function saveAnnouncement() {
-            const val = document.getElementById('edit-announcement').value.trim();
-            if (!val) return showToast('الإعلان لا يمكن أن يكون فارغاً', 'error');
-            platformData.announcement = val;
-            saveData();
-            updateAnnouncementBar();
-            showToast('تم حفظ الإعلان بنجاح', 'success');
-        }
-        
-        function updateBookingToggle() {
-            const toggle = document.getElementById('booking-toggle');
-            const status = document.getElementById('booking-status-text');
-            toggle.checked = platformData.bookingOpen;
-            status.innerHTML = platformData.bookingOpen 
-                ? `<span class="text-emerald-400">الحجز مفتوح حالياً</span>` 
-                : `<span class="text-red-400">الحجز مغلق حالياً</span>`;
-        }
-        
-        function toggleBooking() {
-            platformData.bookingOpen = document.getElementById('booking-toggle').checked;
-            saveData();
-            updateBookingToggle();
-            updateBookingFormState();
-            showToast('تم تحديث حالة الحجز وحفظها تلقائياً', 'success');
-        }
-        
-        function loadAdvancedSettings() {
-            document.getElementById('academic-year-input').value = platformData.currentAcademicYear || "2025/2026";
-        }
-        
-        function saveAcademicYear() {
-            const val = document.getElementById('academic-year-input').value.trim();
-            if (!val) return showToast('أدخل العام الدراسي', 'error');
-            platformData.currentAcademicYear = val;
-            saveData();
-            updateDisplays();
-            showToast('تم حفظ العام الدراسي بنجاح', 'success');
-        }
-        
-        function renderAllAdminLists() {
-            renderAppointmentsList();
-            renderGradesList();
-        }
-        
-        function logoutAdmin() {
-            hideAdminModal();
-            showToast('تم الخروج من لوحة الإدارة', 'success');
-        }
-        
-        function resetAllData() {
-            if (!confirm('إعادة تعيين كل البيانات؟')) return;
-            localStorage.removeItem('drAbanoubPlatformData');
-            location.reload();
-        }
-        
-        // ==================== BOOKING ====================
-        function setupBookingForm() {
-            const form = document.getElementById('booking-form');
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                if (!platformData.bookingOpen) {
-                    showToast('الحجز مغلق حالياً', 'error');
-                    return;
-                }
-                
-                const fullName = document.getElementById('full-name').value.trim();
-                const phone = document.getElementById('phone').value.trim();
-                
-                if (!fullName || !phone) return showToast('املأ جميع الحقول', 'error');
-                if (!/^01[0-9]{9}$/.test(phone)) return showToast('رقم الهاتف غير صحيح', 'error');
-                
-                const message = `📚 طلب حجز جديد
 
-👤 الاسم: ${fullName}
-📱 رقم الهاتف: ${phone}
-🎓 الصف الدراسي: الصف الثالث الثانوي
-📅 العام الدراسي: ${platformData.currentAcademicYear}
-
-تم إرسال الطلب من منصة دكتور أبانوب بديع.`;
-                
-                window.open(`https://wa.me/201288705982?text=${encodeURIComponent(message)}`, '_blank');
-                
-                showToast('تم إرسال الطلب! سيتم التواصل معك قريباً', 'success');
-                form.reset();
-            });
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
         }
-        
-        // Join Foundational Course
-        function joinFoundationalCourse() {
-            const message = `📚 طلب انضمام للكورس التأسيسي
 
-🎓 الصف: الصف الثالث الثانوي
-📅 العام الدراسي: ${platformData.currentAcademicYear || "2025/2026"}
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
 
-أريد الانضمام للكورس التأسيسي لكيمياء الصف الثالث الثانوي.
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
 
-تم الإرسال من منصة دكتور أبانوب بديع.`;
-            
+        function startAutoSlide() {
+            clearInterval(carouselInterval);
+            carouselInterval = setInterval(nextSlide, 3500);
+        }
+
+        function initCarousel() {
+            renderCarousel();
+            updateCarousel();
+            startAutoSlide();
+
+            const carousel = document.getElementById('carousel');
+            carousel.addEventListener('mouseenter', () => clearInterval(carouselInterval));
+            carousel.addEventListener('mouseleave', startAutoSlide);
+        }
+
+        // ==================== تعديل زرار الكورس (يطلب الاسم) ====================
+        function joinFoundationalCourseWithName() {
+            const name = prompt("من فضلك اكتب اسمك:");
+            if (!name) return;
+
+            const message = `📚 طلب انضمام للكورس التأسيسي\n\n👤 الاسم: ${name}\n🎓 الصف: الصف الثالث الثانوي`;
             window.open(`https://wa.me/201288705982?text=${encodeURIComponent(message)}`, '_blank');
-            showToast('تم فتح واتساب للانضمام للكورس التأسيسي', 'success');
         }
-        
-        // ==================== TOAST ====================
-        function showToast(message, type = 'success') {
-            const container = document.getElementById('toast-container');
-            const toast = document.createElement('div');
-            toast.className = `flex items-center gap-x-3 px-5 py-3.5 rounded-2xl shadow-2xl mb-3 max-w-xs ${type === 'success' ? 'bg-emerald-900 border border-emerald-700' : 'bg-red-900 border border-red-700'}`;
-            toast.innerHTML = `
-                <div class="flex items-center gap-x-3">
-                    <i class="fas ${type === 'success' ? 'fa-check-circle text-emerald-400' : 'fa-exclamation-circle text-red-400'} text-xl"></i>
-                    <span class="font-medium text-sm">${message}</span>
-                </div>
-            `;
-            container.appendChild(toast);
-            
-            setTimeout(() => {
-                toast.style.transition = 'all 0.3s ease';
-                toast.style.opacity = '0';
-                setTimeout(() => toast.remove(), 300);
-            }, 3800);
+
+        // ==================== Booking Form ====================
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('full-name').value;
+            const phone = document.getElementById('phone').value;
+
+            const message = `📚 طلب حجز جديد\n\n👤 الاسم: ${name}\n📱 رقم الهاتف: ${phone}\n🎓 الصف: الصف الثالث الثانوي`;
+            window.open(`https://wa.me/201288705982?text=${encodeURIComponent(message)}`, '_blank');
+            alert("تم فتح واتساب!");
+            this.reset();
+        });
+
+        function init() {
+            initCarousel();
+            console.log("%c[دكتور أبانوب بديع] الموقع جاهز مع كل الصور", "color:#14b8a6");
         }
-        
-        // ==================== INIT ====================
-        function initializePlatform() {
-            loadData();
-            
-            updateAnnouncementBar();
-            updateDisplays();
-            updateBookingFormState();
-            setupBookingForm();
-            
-            // Navbar scroll effect
-            const nav = document.querySelector('nav');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 30) nav.classList.add('nav-scrolled');
-                else nav.classList.remove('nav-scrolled');
-            });
-            
-            // Password enter key
-            document.getElementById('admin-password').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') verifyAdminPassword();
-            });
-            
-            console.log('%c[دكتور أبانوب بديع] التعديلات بتتحفظ تلقائياً الآن', 'color:#64748b');
-        }
-        
-        window.onload = initializePlatform;
+
+        window.onload = init;
     </script>
 </body>
-</html>
+        </html>
