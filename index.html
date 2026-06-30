@@ -58,7 +58,7 @@
         </div>
     </section>
 
-    <!-- NEW: Slideshow Section -->
+    <!-- Slideshow Section -->
     <section class="max-w-6xl mx-auto px-6 py-16">
         <div class="text-center mb-10">
             <span class="px-4 py-1 bg-emerald-900/50 text-emerald-400 text-sm font-semibold rounded-3xl">فخرنا</span>
@@ -70,6 +70,150 @@
                 <div id="carousel-inner" class="flex transition-transform duration-700 ease-in-out">
                     <!-- الصور هتتضاف تلقائي -->
                 </div>
+            </div>
+
+            <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 text-slate-900 w-11 h-11 rounded-full flex items-center justify-center shadow-lg">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 text-slate-900 w-11 h-11 rounded-full flex items-center justify-center shadow-lg">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <div id="carousel-dots" class="flex justify-center gap-x-2 mt-6"></div>
+        </div>
+    </section>
+
+    <!-- Join Course -->
+    <section id="join-course" class="max-w-4xl mx-auto px-6 pb-12">
+        <div class="glass p-10 rounded-3xl text-center border border-teal-500/30">
+            <h2 class="text-3xl font-bold mb-4">انضم الآن للكورس التأسيسي</h2>
+            <button onclick="joinFoundationalCourseWithName()" 
+                    class="px-10 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xl rounded-3xl flex items-center gap-x-3 mx-auto">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                <span>انضم عبر واتساب</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Booking -->
+    <section id="booking" class="max-w-3xl mx-auto px-6 pb-20">
+        <div class="text-center mb-8">
+            <h2 class="text-4xl font-extrabold">احجز الآن</h2>
+        </div>
+        
+        <div class="booking-card glass p-8 md:p-10 rounded-3xl">
+            <form id="booking-form" class="space-y-6">
+                <div>
+                    <label class="block text-sm font-semibold mb-2">الاسم بالكامل</label>
+                    <input type="text" id="full-name" required class="form-input w-full bg-slate-900 border border-slate-700 px-5 py-3.5 rounded-2xl text-lg">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-2">رقم الهاتف</label>
+                    <input type="tel" id="phone" required class="form-input w-full bg-slate-900 border border-slate-700 px-5 py-3.5 rounded-2xl text-lg">
+                </div>
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-extrabold text-xl rounded-3xl flex items-center justify-center gap-x-3">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span>احجز الآن عبر واتساب</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="border-t border-slate-800 bg-slate-900 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-sm">
+            <p>© كيرلس نبيل - جميع الحقوق محفوظة</p>
+            <button onclick="showPasswordModal()" class="flex items-center gap-x-2 text-xs text-slate-400 hover:text-teal-400">
+                <i class="fas fa-user-lock"></i>
+                <span>خيارات المطور</span>
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        // ==================== غير هنا أسماء الصور ====================
+        let slides = [
+            { src: "images/FB_IMG_1782778195919.jpg", caption: "" },
+            { src: "images/FB_IMG_17827339494.jpg", caption: "" },
+            { src: "images/FB_IMG_1781278180.jpg", caption: "" },
+            { src: "images/FB_IMG_178127819407.jpg", caption: "" },
+            { src: "images/FB_IMG_17827084564.jpg", caption: "" },
+            { src: "images/FB_IMG_1782709076.jpg", caption: "" },
+            { src: "images/FB_IMG_1782707622.jpg", caption: "" },
+            { src: "images/FB_IMG_1782708430.jpg", caption: "" }
+            // لو عندك صور زيادة، ضيفها بنفس الطريقة
+        ];
+
+        let currentSlide = 0;
+
+        function renderCarousel() {
+            const inner = document.getElementById('carousel-inner');
+            inner.innerHTML = '';
+
+            slides.forEach((slide, index) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = `min-w-full flex-shrink-0 relative`;
+                slideDiv.innerHTML = `
+                    <img src="${slide.src}" 
+                         class="w-full h-[420px] object-cover rounded-3xl"
+                         onerror="this.style.display='none'">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 rounded-b-3xl">
+                        <p class="text-white text-lg font-semibold">${slide.caption}</p>
+                    </div>
+                `;
+                inner.appendChild(slideDiv);
+            });
+        }
+
+        function updateCarousel() {
+            const inner = document.getElementById('carousel-inner');
+            inner.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        function initCarousel() {
+            renderCarousel();
+            updateCarousel();
+            setInterval(nextSlide, 4000);
+        }
+
+        // ==================== باقي الكود ====================
+        function joinFoundationalCourseWithName() {
+            const name = prompt("من فضلك اكتب اسمك:");
+            if (!name) return;
+
+            const message = `📚 طلب انضمام للكورس التأسيسي\n\n👤 الاسم: ${name}\n🎓 الصف: الصف الثالث الثانوي`;
+            window.open(`https://wa.me/201288705982?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('full-name').value;
+            const phone = document.getElementById('phone').value;
+
+            const message = `📚 طلب حجز جديد\n\n👤 الاسم: ${name}\n📱 رقم الهاتف: ${phone}\n🎓 الصف: الصف الثالث الثانوي`;
+            window.open(`https://wa.me/201288705982?text=${encodeURIComponent(message)}`, '_blank');
+            alert("تم فتح واتساب!");
+            this.reset();
+        });
+
+        function init() {
+            initCarousel();
+            console.log("%c[دكتور أبانوب بديع] الموقع شغال", "color:#14b8a6");
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>                </div>
             </div>
 
             <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 text-slate-900 w-11 h-11 rounded-full flex items-center justify-center shadow-lg">
