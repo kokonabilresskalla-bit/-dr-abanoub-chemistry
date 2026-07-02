@@ -3,73 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دكتور أبانوب بديع - كيمياء المرحلة الثانوية</title>
+    <title>دكتور أبانوب بديع - كيمياء وعلوم المرحلة الثانوية</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&amp;family=Noto+Sans+Arabic:wght@400;500;700&amp;display=swap');
-        
-        body {
-            font-family: 'Cairo', 'Noto Sans Arabic', system-ui, -apple-system, sans-serif;
-        }
-        
-        .chemical-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1135 100%);
-        }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        
-        .booking-card {
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
-                        box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .form-input {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .form-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
-            border-color: #14b8a6;
-        }
-        
-        .nav-scrolled {
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(16px);
-        }
+        body { font-family: 'Cairo', system-ui, sans-serif; }
+        .chemical-bg { background: linear-gradient(135deg, #0f172a 0%, #1e1135 100%); }
+        .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.15); }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200 overflow-x-hidden">
-    <!-- Top Announcement Bar -->
-    <div id="announcement-bar" 
-         class="bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-600 text-white py-3 px-4 text-center font-medium shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-center gap-x-3">
-            <i class="fas fa-fire text-xl animate-pulse"></i>
-            <span id="announcement-text" class="text-lg font-semibold tracking-wide">
-                🔥 متاح الآن الكورس التأسيسي لكيمياء الصف الثالث الثانوي 🔥
-            </span>
-            <i class="fas fa-fire text-xl animate-pulse"></i>
+<body class="bg-slate-950 text-slate-200">
+
+    <!-- Top Announcement -->
+    <div class="bg-gradient-to-r from-teal-600 via-emerald-600 to-teal-600 text-white py-3 px-4 text-center font-medium shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-center items-center gap-x-3">
+            <i class="fas fa-graduation-cap text-xl"></i>
+            <span class="text-lg font-semibold">منصة دكتور أبانوب بديع لتعليم الكيمياء والعلوم</span>
         </div>
     </div>
 
     <!-- Navbar -->
     <nav class="bg-slate-900 border-b border-slate-800 sticky top-[52px] z-40">
-        <div class="max-w-7xl mx-auto">
-            <div class="px-6 py-5 flex items-center justify-between">
-                <div class="flex items-center gap-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
-                        <i class="fas fa-flask text-white text-3xl"></i>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-bold tracking-tighter">دكتور أبانوب بديع</h1>
-                        <p class="text-[10px] text-teal-400 -mt-1 font-medium">كيمياء المرحلة الثانوية</p>
-                    </div>
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-x-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl flex items-center justify-center">
+                    <i class="fas fa-flask text-white text-3xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-tighter">دكتور أبانوب بديع</h1>
+                    <p class="text-[10px] text-teal-400 -mt-1">كيمياء وعلوم المرحلة الثانوية</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="chemical-bg min-h-[78vh] flex items-center">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter mb-4">دكتور أبانوب بديع</h1>
+            <p class="text-2xl text-slate-300 mb-8">خبير الكيمياء والعلوم للمرحلة الثانوية</p>
+            
+            <button onclick="document.getElementById('stages').scrollIntoView({ behavior: 'smooth' })" 
+                    class="px-10 py-4 bg-white text-slate-900 font-bold rounded-3xl text-lg">
+                احجز الآن في المراحل المختلفة
+            </button>
+        </div>
+    </section>
+
+    <!-- مراحل الحجز -->
+    <section id="stages" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-extrabold tracking-tight">احجز في المراحل المختلفة</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <!-- كيمياء 3 ثانوي -->
+            <div class="glass p-7 rounded-3xl border border-white/10">
+                <h3 class="text-xl font-bold mb-2">كيمياء الصف الثالث الثانوي</h3>
+                <p class="text-slate-400 text-sm mb-6">حصص + مراجعة + حل امتحانات</p>
+                <button onclick="openBookingModal('كيمياء الصف الثالث الثانوي')" 
+                        class="w-full py-3 bg-teal-600 hover:bg-teal-500 text-white font-bold rounded-2xl">
+                    احجز الآن
+                </button>
+            </div>
+
+            <!-- الكورس التأسيسي -->
+            <div class="glass p-7 rounded-3xl border border-teal-500">
+                <span class="px-3 py-1 bg-teal-600 text-white text-xs font-bold rounded-full">الأكثر طلبًا</span>
+                <h3 class="text-xl font-bold mb-2 mt-3">الكورس التأسيسي<br>ثالثة ثانوي كيميا</h3>
+                <p class="text-slate-400 text-sm mb-6">تأسيس قوي + شرح مبسط</p>
+                <button onclick="openBookingModal('الكورس التأسيسي - ثالثة ثانوي كيميا')" 
+                        class="w-full py-3 bg-teal-600 hover:bg-teal-500 text-white font-bold rounded-2xl">
+                    احجز الآن
+                </button>
+            </div>
+
+            <!-- كيمياء 2 ثانوي -->
+            <div class="glass p-7 rounded-3xl border border-white/10">
+                <h3 class="text-xl font-bold mb-2">كيمياء الصف الثاني الثانوي</h3>
+                <p class="text-slate-400 text-sm mb-6">تأسيس + حل مسائل</p>
+                <button onclick="openBookingModal('كيمياء الصف الثاني الثانوي')" 
+                        class="w-full py-3 bg-white text-slate-900 font-bold rounded-2xl">
+                    احجز الآن
+                </button>
+            </div>
+
+            <!-- علوم متكاملة -->
+            <div class="glass p-7 rounded-3xl border border-white/10">
+                <h3 class="text-xl font-bold mb-2">علوم متكاملة الصف الأول الثانوي</h3>
+                <p class="text-slate-400 text-sm mb-6">كيمياء + فيزياء + بيولوجيا</p>
+                <button onclick="openBookingModal('علوم متكاملة الصف الأول الثانوي')" 
+                        class="w-full py-3 bg-white text-slate-900 font-bold rounded-2xl">
+                    احجز الآن
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- قسم الصفحات (محسن) -->
+    <section class="max-w-7xl mx-auto px-6 pb-16">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-extrabold">الصفحات</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            
+            <!-- يوتيوب -->
+            <div class="glass p-6 rounded-3xl">
+                <h3 class="font-bold text-xl mb-4 flex items-center gap-x-2">
+                    <i class="fab fa-youtube text-red-500 text-2xl"></i> 
+                    فيديوهات يوتيوب
+                </h3>
+                
+                <div class="space-y-4">
+                    <iframe width="100%" height="190" src="https://www.youtube.com/embed/-j1HQFnPWH0" 
+                            frameborder="0" allowfullscreen class="rounded-2xl"></iframe>
+                    
+                    <iframe width="100%" height="190" src="https://www.youtube.com/embed/E54A2l3M8EU" 
+                            frameborder="0" allowfullscreen class="rounded-2xl"></iframe>
+                    
+                    <iframe width="100%" height="190" src="https://www.youtube.com/embed/o1TJLqO4uJE" 
+                            frameborder="0" allowfullscreen class="rounded-2xl"></iframe>
+                </div>
+            </div>
+
+            <!-- فيسبوك -->
+            <div class="glass p-6 rounded-3xl flex flex-col justify-center">
+                <h3 class="font-bold text-xl mb-4 flex items-center gap-x-2">
+                    <i class="fab fa-facebook text-blue-500 text-2xl"></i> 
+                    صفحة فيسبوك
+                </h3>
+                <a href="https://www.facebook.com/share/1K7xdxadxX/" target="_blank"
+                   class="inline-block px-8 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-2xl text-center">
+                    زيارة الصفحة
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900 py-8">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-y-4 text-sm">
+                <p class="text-slate-400">© كيرلس نبيل - جميع الحقوق محفوظة</p>
+                
+                <!-- Developer Contacts -->
+                <div class="flex items-center gap-x-5 text-sm">
+                    <a href="https://wa.me/201288705982" target="_blank" class="flex items-center gap-x-2 hover:text-teal-400">
+                        <i class="fab fa-whatsapp text-lg"></i>
+                        <span>للتواصل</span>
+                    </a>
+                    <a href="https://www.facebook.com/share/1E9zsbD8kA/" target="_blank" class="flex items-center gap-x-2 hover:text-teal-400">
+                        <i class="fab fa-facebook text-lg"></i>
+                        <span>للتواصل</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100]">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-md mx-4 rounded-3xl p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold" id="modal-stage-title"></h3>
+                <button onclick="closeBookingModal()" class="text-2xl">×</button>
+            </div>
+
+            <form id="booking-form" class="space-y-5">
+                <input type="hidden" id="selected-stage">
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2">الاسم الكامل</label>
+                    <input type="text" id="student-name" required class="w-full bg-slate-800 border border-slate-700 px-4 py-3 rounded-2xl">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2">رقم هاتف الطالب</label>
+                    <input type="tel" id="phone" required class="w-full bg-slate-800 border border-slate-700 px-4 py-3 rounded-2xl">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2">رقم هاتف ولي الأمر</label>
+                    <input type="tel" id="parent-phone" required class="w-full bg-slate-800 border border-slate-700 px-4 py-3 rounded-2xl">
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-teal-500 to-emerald-500 text-white font-extrabold text-xl rounded-3xl flex items-center justify-center gap-x-3">
+                    <i class="fab fa-whatsapp text-2xl"></i>
+                    <span>إرسال عبر واتساب</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openBookingModal(stage) {
+            document.getElementById('selected-stage').value = stage;
+            document.getElementById('modal-stage-title').innerText = stage;
+            document.getElementById('booking-modal').classList.remove('hidden');
+            document.getElementById('booking-modal').classList.add('flex');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+            document.getElementById('booking-modal').classList.remove('flex');
+            document.getElementById('booking-form').reset();
+        }
+
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const stage = document.getElementById('selected-stage').value;
+            const name = document.getElementById('student-name').value;
+            const phone = document.getElementById('phone').value;
+            const parentPhone = document.getElementById('parent-phone').value;
+
+            const message = `📚 طلب حجز جديد
+
+🎓 المرحلة: ${stage}
+👤 الاسم: ${name}
+📱 رقم هاتف الطالب: ${phone}
+👨‍👩‍👧 رقم هاتف ولي الأمر: ${parentPhone}
+
+تم إرسال الطلب من موقع دكتور أبانوب بديع.`;
+
+            window.open(`https://wa.me/201288705982?text=${encodeURIComponent(message)}`, '_blank');
+            closeBookingModal();
+            alert('تم فتح واتساب بنجاح!');
+        });
+    </script>
+</body>
+</html>                    </div>
                 </div>
 
                 <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
