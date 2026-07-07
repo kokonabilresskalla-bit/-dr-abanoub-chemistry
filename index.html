@@ -8,9 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body { font-family: 'Cairo', system-ui, sans-serif; }
-        .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.15); }
         .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('images/hero-bg.jpg');
+            background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('images/hero-bg.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -41,9 +40,12 @@
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero-bg min-h-[90vh] flex items-center">
-        <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
+    <!-- Hero مع خلفية متحركة -->
+    <section class="relative min-h-[92vh] flex items-center overflow-hidden">
+        <canvas id="chemical-bg" class="absolute inset-0 w-full h-full z-0"></canvas>
+        <div class="absolute inset-0 bg-black/55 z-10"></div>
+
+        <div class="relative z-20 max-w-5xl mx-auto px-6 text-center">
             <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter mb-4 text-white">
                 دكتور أبانوب بديع
             </h1>
@@ -65,7 +67,8 @@
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <div class="glass p-7 rounded-3xl border border-white/10">
+            <!-- كارت 1 -->
+            <div class="bg-slate-900 border border-slate-700 rounded-3xl p-7">
                 <h3 class="text-xl font-bold mb-2">كيمياء الصف الثالث الثانوي</h3>
                 <p class="text-slate-400 text-sm mb-6">حصص + مراجعة + حل امتحانات</p>
                 <button onclick="openBookingModal('كيمياء الصف الثالث الثانوي')" 
@@ -74,7 +77,8 @@
                 </button>
             </div>
 
-            <div class="glass p-7 rounded-3xl border border-teal-500">
+            <!-- كارت 2 (مميز) -->
+            <div class="bg-slate-900 border border-teal-500 rounded-3xl p-7">
                 <span class="px-3 py-1 bg-teal-600 text-white text-xs font-bold rounded-full">الأكثر طلبًا</span>
                 <h3 class="text-xl font-bold mb-2 mt-3">الكورس التأسيسي<br>ثالثة ثانوي كيميا</h3>
                 <p class="text-slate-400 text-sm mb-6">تأسيس قوي + شرح مبسط</p>
@@ -84,20 +88,22 @@
                 </button>
             </div>
 
-            <div class="glass p-7 rounded-3xl border border-white/10">
+            <!-- كارت 3 -->
+            <div class="bg-slate-900 border border-slate-700 rounded-3xl p-7">
                 <h3 class="text-xl font-bold mb-2">كيمياء الصف الثاني الثانوي</h3>
                 <p class="text-slate-400 text-sm mb-6">تأسيس + حل مسائل</p>
                 <button onclick="openBookingModal('كيمياء الصف الثاني الثانوي')" 
-                        class="w-full py-3 bg-white text-slate-900 font-bold rounded-2xl">
+                        class="w-full py-3 bg-teal-600 hover:bg-teal-500 text-white font-bold rounded-2xl">
                     احجز الآن
                 </button>
             </div>
 
-            <div class="glass p-7 rounded-3xl border border-white/10">
+            <!-- كارت 4 -->
+            <div class="bg-slate-900 border border-slate-700 rounded-3xl p-7">
                 <h3 class="text-xl font-bold mb-2">علوم متكاملة الصف الأول الثانوي</h3>
                 <p class="text-slate-400 text-sm mb-6">كيمياء + فيزياء + بيولوجيا</p>
                 <button onclick="openBookingModal('علوم متكاملة الصف الأول الثانوي')" 
-                        class="w-full py-3 bg-white text-slate-900 font-bold rounded-2xl">
+                        class="w-full py-3 bg-teal-600 hover:bg-teal-500 text-white font-bold rounded-2xl">
                     احجز الآن
                 </button>
             </div>
@@ -114,7 +120,7 @@
         <div class="grid md:grid-cols-2 gap-8">
             
             <!-- يوتيوب -->
-            <div class="glass p-6 rounded-3xl">
+            <div class="bg-slate-900 border border-slate-700 p-6 rounded-3xl">
                 <h3 class="font-bold text-xl mb-4 flex items-center gap-x-2">
                     <i class="fab fa-youtube text-red-500 text-2xl"></i> 
                     فيديوهات يوتيوب
@@ -154,7 +160,7 @@
             </div>
 
             <!-- فيسبوك -->
-            <div class="glass p-6 rounded-3xl flex flex-col justify-center">
+            <div class="bg-slate-900 border border-slate-700 p-6 rounded-3xl flex flex-col justify-center">
                 <h3 class="font-bold text-xl mb-4 flex items-center gap-x-2">
                     <i class="fab fa-facebook text-blue-500 text-2xl"></i> 
                     صفحة فيسبوك
@@ -234,6 +240,7 @@
     </div>
 
     <script>
+        // ===== Booking Form =====
         function openBookingModal(stage) {
             document.getElementById('selected-stage').value = stage;
             document.getElementById('modal-stage-title').innerText = stage;
@@ -269,6 +276,70 @@
             window.open(`https://wa.me/201288705982?text=${encodeURIComponent(message)}`, '_blank');
             closeBookingModal();
         });
+
+        // ===== خلفية كيميائية متحركة (أقوى وأوضح) =====
+        const canvas = document.getElementById('chemical-bg');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        const symbols = ['H', 'O', 'C', 'N', 'S', 'Cl', 'Na', 'K'];
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 4 + 3.5;
+                this.speedX = (Math.random() - 0.5) * 0.6;
+                this.speedY = (Math.random() - 0.5) * 0.6;
+                this.symbol = symbols[Math.floor(Math.random() * symbols.length)];
+                this.opacity = Math.random() * 0.7 + 0.5;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = '#14b8a6';
+                ctx.font = `bold ${this.size * 4.2}px Cairo`;
+                ctx.fillText(this.symbol, this.x, this.y);
+                ctx.restore();
+            }
+        }
+
+        function initParticles() {
+            particles.length = 0;
+            for (let i = 0; i < 65; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            
+            requestAnimationFrame(animate);
+        }
+
+        initParticles();
+        animate();
     </script>
 </body>
-</html>
+    </html>
