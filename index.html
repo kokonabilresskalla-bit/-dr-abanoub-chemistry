@@ -37,7 +37,6 @@
 
     <!-- Hero مع الخلفية المتحركة -->
     <section class="relative min-h-[92vh] flex items-center overflow-hidden">
-        <!-- Canvas الخلفية المتحركة -->
         <canvas id="chemical-bg" class="absolute inset-0 w-full h-full z-0"></canvas>
         <div class="absolute inset-0 bg-black/55 z-10"></div>
 
@@ -185,8 +184,14 @@
         </div>
     </footer>
 
-    <!-- Audio - يشتغل تلقائي -->
-    <audio id="bg-music" autoplay loop>
+    <!-- زرار الموسيقى -->
+    <button id="music-btn"
+            class="fixed bottom-6 right-6 z-[999] w-14 h-14 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-full flex items-center justify-center shadow-lg transition-all">
+        <i class="fas fa-play text-xl text-teal-400"></i>
+    </button>
+
+    <!-- Audio -->
+    <audio id="bg-music" loop>
         <source src="background-music.mp3" type="audio/mpeg">
     </audio>
 
@@ -237,15 +242,23 @@
     </div>
 
     <script>
-        // ===== الموسيقى تشتغل تلقائي =====
+        // ===== الموسيقى =====
         const music = document.getElementById('bg-music');
-        music.volume = 0.3;
+        const musicBtn = document.getElementById('music-btn');
+        let isPlaying = false;
 
-        window.onload = function() {
-            music.play().catch(() => {
-                console.log("المتصفح منع تشغيل الموسيقى تلقائيًا");
-            });
-        };
+        music.volume = 0.35;
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.innerHTML = '<i class="fas fa-play text-xl text-teal-400"></i>';
+            } else {
+                music.play();
+                musicBtn.innerHTML = '<i class="fas fa-pause text-xl text-teal-400"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
 
         // ===== Booking Form =====
         function openBookingModal(stage) {
